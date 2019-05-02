@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
+
 const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
 
 
+
 const app = express();
+const port = process.env.PORT || PORT
 
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -72,6 +75,6 @@ app.get('*', (req, res) => {
     res.render('error', {title:'404'})
     
 })
-app.listen(3000, () => {
-    console.log("server started on port 3000")
+app.listen(port, () => {
+    console.log("server started on port" + port)
 })
